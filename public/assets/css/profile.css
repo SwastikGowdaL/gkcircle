@@ -13,7 +13,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #48C8F5;
+    background-color: #48c8f5;
     /* color of the scroll thumb */
     border-radius: 6px;
     /* roundness of the scroll thumb */
@@ -162,9 +162,6 @@ input[type="password"] {
     visibility: hidden !important;
 }
 
-
-
-
 .post-ana .bx {
     cursor: pointer;
 }
@@ -179,7 +176,32 @@ input[type="password"] {
 
 .content-1 {
     display: block;
-  }
+}
+
+.logout{
+    position: fixed;
+    display: flex;
+    text-align: center;
+    border-radius: 5px;
+    right: 15px;
+    top: 15px;
+    background: #dc3545;
+    color: #fff;
+    transition: display 0.5s ease-in-out;
+    z-index: 99999;
+padding: 5px;
+transition: 0.5s ease-in-out;
+}
+
+.logout .bx{
+    font-size: 1.5rem;
+}
+
+.logout:hover{
+    color: white;
+    padding: 8px;
+    transition: 0.5s ease-in-out;
+}
 
 @media screen and (max-width: 1198px) {
     header {
@@ -210,11 +232,9 @@ input[type="password"] {
         font-size: 0.9rem;
     }
 
-
     .profile-name {
         padding-left: 10px;
     }
-
 }
 
 @media screen and (max-width: 767px) {

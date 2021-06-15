@@ -285,7 +285,7 @@
           <div class="comments">
             <div class="commenter-pic">
               <img class="rounded-circle"
-                src="https://www.irishtimes.com/polopoly_fs/1.2473777.1450703313!/image/image.jpg_gen/derivatives/ratio_1x1_w1200/image.jpg"
+                src="https://images.assettype.com/freepressjournal%2F2021-06%2F63916b9e-2cfd-4eb2-aa4c-b7a833c24e46%2F647_041317121315.jpeg?w=400&dpr=2.6"
                 width="50" height="50" alt="comment1" id="user_comment_pic">
             </div>
             <div class="comment_from_peeps">
@@ -453,7 +453,7 @@
         document.getElementsByClassName("post-auth-name")[0].innerText = result.name;
         document.getElementById("auth-pic").setAttribute("src", `http://127.0.0.1:3000/avatar/${result._id}`);
       } catch (e) {
-        alert("something went wrong");
+        console.log("something went wrong");
       }
     }
 
@@ -467,7 +467,8 @@
           document.getElementById("liked_color").style.color = "#48C8F5";
         }
       } catch (e) {
-        alert("something went wrong while fetching liked details");
+        console.log("something went wrong while fetching liked details");
+        document.getElementsByClassName("comments")[0].style.contentVisibility="hidden";
       }
     }
 
@@ -482,7 +483,7 @@
           document.getElementById("bookmarked_color").style.color = "#48C8F5";
         }
       } catch (e) {
-        alert("something went wrong while fetching bookmarked details");
+        console.log("something went wrong while fetching bookmarked details");
       }
     }
 
@@ -727,7 +728,7 @@
           })
           document.getElementById("likes").innerText = Number(likes) + 1;
         } catch (e) {
-          alert("error while liking the post");
+          console.log("error while liking the post");
         }
       }
     }
@@ -748,7 +749,7 @@
           })
           document.getElementById("bookmark").innerText = Number(bookmarks) + 1;
         } catch (e) {
-          alert("error while bookmarking the post");
+          console.log("error while bookmarking the post");
         }
       }
     }
@@ -810,7 +811,7 @@
           timer: 1500
         })
       } catch (e) {
-        alert("something went  wrong while reporting");
+        console.log("something went  wrong while reporting");
       }
     }
 
@@ -855,7 +856,7 @@
 
 
         } catch (e) {
-          alert("error while saving comment");
+          console.log("error while saving comment");
         }
       }
 

@@ -218,7 +218,17 @@
 
 
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+     <a href="#" class="logout"><i class='bx bxs-log-out' ></i> Logout</a>
     <div id="preloader"></div>
+
+<script >
+    document.getElementsByClassName("logout")[0].addEventListener("click",()=>{
+        localStorage.removeItem("email");
+        localStorage.removeItem("id");
+        localStorage.removeItem("profile_opt_icons");
+        window.location.href="http://localhost:3000/index";
+    })
+</script>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>

@@ -1,26 +1,23 @@
-// setTimeout(()=>{
-//     document.getElementById("sidebar-btn").click();
-// },2500);
+//* checking the client width for every 0.5 sec and if < 480px removing the icons, optimized for mob view 
 setInterval(function () {
   var width = document.documentElement.clientWidth;
   console.log(width);
   if (width <= 480) {
-    var x = document.getElementById("icon-1");
-    x.remove();
+    document.getElementById("icon-1").remove();
     document.getElementById("icon-2").remove();
     document.getElementById("icon-3").remove();
     document.getElementById("icon-4").remove();
   }
 }, 500);
 
-// document.getElementsByClassName("content-2")[0].addEventListener("click",()=>{
-// window.location.href="/profile";
-// });
+//* setting the bookmark value for profile_opt_icons in local storage when bookmark clicked in homepage
 document.getElementsByClassName("bk_click")[0].addEventListener("click", () => {
   localStorage.setItem("profile_opt_icons", "bookmark");
 });
 
 const loader_for_posts = document.getElementById("loader-for-posts");
+
+//* infinite scrolling
 const observer = new IntersectionObserver((entries) => {
   console.log(entries);
   console.log(entries[0].isIntersecting);
@@ -33,9 +30,9 @@ const observer = new IntersectionObserver((entries) => {
     user_details();
   }
 });
-
 observer.observe(loader_for_posts);
 
+//* setting values for profile_opt_icons in local storage when respective option is clicked in homepage
 document
   .getElementsByClassName("content-2-opt")[0]
   .addEventListener("click", () => {
@@ -70,42 +67,47 @@ var quill = new Quill("#editor", {
 
 var user_name;
 
+
+
 async function user_details() {
+
+  //* fetching user data 
   const res = await req_that_details("http://127.0.0.1:3000/user/name");
-  console.log(res);
-
   user_name = res.name;
-  console.log(user_name);
 
+  //* defining the color of the flag in homepage based on reports
   if (res.reports === 0) {
     document.getElementById("reports").style.color = "#8DE885";
-  } else if (res.reports <= 10) {
+  } else if (res.reports === 1) {
     document.getElementById("reports").style.color = "#ECE289";
   } else {
     document.getElementById("reports").style.color = "#E76F6F";
   }
 
+  //* hiding red notification alert if there isn't any
   var r = document.querySelector(":root");
   if (res.messages.length === 0) {
     r.style.setProperty("--notify", "hidden");
   }
 
+    //* fetching posts from ready collection in db
   const res1 = await req_for_posts(
     "http://127.0.0.1:3000/posts/ready",
     res.hashtags
   );
-  console.log(res1);
 
+  //* setting the number of likes,posts,comment,bookmark done by user
   document.getElementById("user_msg_name").innerText = res.name;
   document.getElementById("pb_count").innerText = res.published_post.length;
   document.getElementById("like_count").innerText = res.liked_post.length;
-  document.getElementById("comment_count").innerText =
-    res.commented_post.length;
+  document.getElementById("comment_count").innerText = res.commented_post.length;
   document.getElementById("bk_count").innerText = res.bookmarked.length;
 
-  creating_like_posts(res1.post_id);
+  creating_like_posts(res1.post_id); //!
 }
 
+
+//* req for user details done by axios and response sent back
 function req_that_details(path) {
   return new Promise(function (resolve, reject) {
     axios

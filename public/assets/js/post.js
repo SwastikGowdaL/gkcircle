@@ -36,7 +36,7 @@ document.getElementById("audio_player").addEventListener("click", () => {
     r.style.setProperty("--re", "black");
     r.style.setProperty("--pi", "black");
     r.style.setProperty("--pu", "black");
-    document.getElementById("audio_player").innerHTML="<i class='bx bx-play-circle' class='play-button'></i>"
+    document.getElementById("audio_player").innerHTML="<i class='bx bx-play-circle' class='play-button'></i>";
     audio = 2;
   } else if (audio === 2) {
     window.speechSynthesis.resume();
