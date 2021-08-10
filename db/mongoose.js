@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-//* for working with hosted geekcircle db - mongodb+srv://swastik:swastik12345@cluster0.59ztt.mongodb.net/geekcircle 
-//! as of now working with local mongodb db
+//* for working with local geekcircle db - mongodb://127.0.0.1:27017/geek-circle
+//! as of now working with hosted mongodb db
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/geek-circle",
+  "mongodb+srv://swastik:swastik12345@cluster0.59ztt.mongodb.net/geekcircle",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
