@@ -41,10 +41,10 @@ var user_id = localStorage.getItem("id");
 
 checking_reports();
 async function checking_reports() {
-  const res = await req_that_report_details("http://127.0.0.1:3000/user/name");
+  const res = await req_that_report_details("/user/name");
 
   if (res.reports === 1) {
-    window.location.href = "http://localhost:3000/reported_page";
+    window.location.href = "/reported_page";
   }
 }
 
@@ -238,27 +238,27 @@ async function publish_content() {
     Swal.fire("Error", "Please Provide an Image", "error");
   } else {
     try {
-      var result = await saving_post("http://127.0.0.1:3000/posts/publish");
+      var result = await saving_post("/posts/publish");
       console.log(result);
       post_id = result._id;
 
       bodyFormData.append("id", post_id);
       bodyFormData.append("pic", myFile.files[0]);
-      var result1 = await saving_post_pic("http://127.0.0.1:3000/upload/post");
+      var result1 = await saving_post_pic("/upload/post");
       console.log(result1);
 
       var result2 = await saving_read_min(
-        "http://127.0.0.1:3000/post/read_min"
+        "/post/read_min"
       );
       console.log(result2);
 
       var result3 = await saving_publisher_det(
-        "http://127.0.0.1:3000/post/publisher_det"
+        "/post/publisher_det"
       );
       console.log(result3);
 
       var result4 = await saving_hashtag_det(
-        "http://127.0.0.1:3000/posts/hashtags"
+        "/posts/hashtags"
       );
       console.log(result4);
 

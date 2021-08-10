@@ -62,7 +62,7 @@ async function next() {
   } else {
     try {
       var result = await set_recommendation(
-        "http://127.0.0.1:3000/users/recommendation"
+        "/users/recommendation"
       );
       Swal.fire(
         'Good job!',
@@ -71,7 +71,7 @@ async function next() {
       )
 
       setTimeout(()=>{
-        window.location.href="http://localhost:3000/homepage";
+        window.location.href="/homepage";
       },4000);
 
     } catch (e) {

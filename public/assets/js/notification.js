@@ -22,7 +22,7 @@ document.getElementsByClassName("clear")[0].addEventListener("click", () => {
 async function req_to_delete_notification() {
   try {
     const res = await delete_all_notification(
-      "http://127.0.0.1:3000/post/message/delete"
+      "/post/message/delete"
     );
     console.log("deleted");
     location.reload();
@@ -50,7 +50,7 @@ function delete_all_notification(path) {
 messages_details();
 
 async function messages_details() {
-  var user_details = await req_that_details("http://127.0.0.1:3000/user/name");
+  var user_details = await req_that_details("/user/name");
 
   if (user_details.messages.length === 0) {
     Swal.fire(
@@ -67,7 +67,7 @@ async function messages_details() {
     var a1 = document.createElement("a");
     a1.setAttribute(
       "href",
-      `http://localhost:3000/posts?post_id=${user_details.messages[i].post_id}`
+      `/posts?post_id=${user_details.messages[i].post_id}`
     );
 
     document.getElementsByClassName("main-content")[0].appendChild(a1);
@@ -83,7 +83,7 @@ async function messages_details() {
     var img1 = document.createElement("img");
     img1.setAttribute(
       "src",
-      `http://127.0.0.1:3000/avatar/${user_details.messages[i].user_id}`
+      `/avatar/${user_details.messages[i].user_id}`
     );
     img1.setAttribute("width", "70");
     img1.setAttribute("height", "70");
@@ -113,7 +113,7 @@ async function messages_details() {
     var img2 = document.createElement("img");
     img2.setAttribute(
       "src",
-      `http://127.0.0.1:3000/post/${user_details.messages[i].post_id}`
+      `/post/${user_details.messages[i].post_id}`
     );
     img2.setAttribute("width", "70");
     img2.setAttribute("height", "70");

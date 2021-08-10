@@ -36,12 +36,12 @@ async function signup() {
     password = document.getElementById("password").value;
     console.log(email);
     console.log(password);
-    var result = await add_user("http://127.0.0.1:3000/users/signup");
+    var result = await add_user("/users/signup");
     Swal.fire("Good job!", "Signup Complete!", "success");
     localStorage.setItem("id", result._id);
     console.log(result._id);
     setTimeout(() => {
-      window.location.href = "http://localhost:3000/recommendation";
+      window.location.href = "/recommendation";
     }, 3000);
   } catch (e) {
     console.log(e);

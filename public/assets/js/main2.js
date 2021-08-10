@@ -64,7 +64,7 @@ async function check_user(){
   u_input.push(email);
 
   try{
-  var result = await makeGetRequest('http://127.0.0.1:3000/users/login1');
+  var result = await makeGetRequest('/users/login1');
   localStorage.setItem("id", result._id);
   console.log(result._id); 
   
@@ -108,7 +108,7 @@ try{
     console.log(u_input);
     len=u_input.length;
     console.log(len); 
-   var result = await makeGetRequest2('http://127.0.0.1:3000/users/login');
+   var result = await makeGetRequest2('/users/login');
    localStorage.setItem("id", result._id);
    console.log(result._id); 
    window.location.href="/homepage";
@@ -125,7 +125,7 @@ try{
     else if(join===2){
         if(email){
         localStorage.setItem("email", email);
-        window.location.href = 'http://localhost:3000/signup';
+        window.location.href = '/signup';
         }
     }
 

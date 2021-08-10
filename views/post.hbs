@@ -389,7 +389,7 @@
 
     request_for_details();
     async function request_for_details() {
-      const res = await req_that_details("http://127.0.0.1:3000/user/name");
+      const res = await req_that_details("/user/name");
       user_name = res.name;
     }
 
@@ -448,10 +448,10 @@
 
     async function publisher_name() {
       try {
-        const result = await makeGetRequest("http://127.0.0.1:3000/user/name");
+        const result = await makeGetRequest("/user/name");
         console.log(result);
         document.getElementsByClassName("post-auth-name")[0].innerText = result.name;
-        document.getElementById("auth-pic").setAttribute("src", `http://127.0.0.1:3000/avatar/${result._id}`);
+        document.getElementById("auth-pic").setAttribute("src", `/avatar/${result._id}`);
       } catch (e) {
         console.log("something went wrong");
       }
@@ -459,7 +459,7 @@
 
     async function whether_postLiked() {
       try {
-        const res = await req_for_liked("http://127.0.0.1:3000/post/liked_check");
+        const res = await req_for_liked("/post/liked_check");
         console.log(res.liked);
         if (res.liked === 0) {
           post_like = 1;
@@ -474,7 +474,7 @@
 
     async function whether_postBookmarked() {
       try {
-        const res = await req_for_bookmarked("http://127.0.0.1:3000/post/bookmarked_check");
+        const res = await req_for_bookmarked("/post/bookmarked_check");
         console.log("bookmarked");
         console.log(res.bookmarked);
         if (res.bookmarked === 0) {
@@ -499,7 +499,7 @@
 
 
     async function report_user() {
-      const res = await req_to_report_user("http://127.0.0.1:3000/user/reported");
+      const res = await req_to_report_user("/user/reported");
     }
 
 
@@ -717,8 +717,8 @@
     async function like_post() {
       if (post_like) {
         try {
-          const res = await like_that_post("http://127.0.0.1:3000/post/liked");
-          const res1 = await msg_like_that_post("http://127.0.0.1:3000/post/message");
+          const res = await like_that_post("/post/liked");
+          const res1 = await msg_like_that_post("/post/message");
           document.getElementById("liked_color").style.color = "#48C8F5";
           Swal.fire({
             position: 'bottom-end',
@@ -738,8 +738,8 @@
     async function bookmark_post() {
       if (post_bookmark) {
         try {
-          const res = await bookmark_that_post("http://127.0.0.1:3000/post/bookmarked");
-          const res1 = await msg_bookmark_that_post("http://127.0.0.1:3000/post/message");
+          const res = await bookmark_that_post("/post/bookmarked");
+          const res1 = await msg_bookmark_that_post("/post/message");
           document.getElementById("bookmarked_color").style.color = "#48C8F5";
           Swal.fire({
             position: 'bottom-end',
@@ -791,7 +791,7 @@
       })
       var temp = document.getElementById("shares").innerText;
       document.getElementById("shares").innerText = Number(temp) + 1;
-      const res = await post_shared("http://127.0.0.1:3000/post/shares");
+      const res = await post_shared("/post/shares");
       console.log("shares");
       console.log(res);
 
@@ -802,8 +802,8 @@
     async function post_report() {
 
       try {
-        const res = await report_that_post("http://127.0.0.1:3000/post/report")
-        const res1 = await msg_report_that_post("http://127.0.0.1:3000/post/message");
+        const res = await report_that_post("/post/report")
+        const res1 = await msg_report_that_post("/post/message");
         Swal.fire({
           position: 'bottom-end',
           title: '🏴 Reported!',
@@ -822,9 +822,9 @@
         var u_comment = document.getElementById("user_comment").value;
         u_comment = u_comment.trim();
         try {
-          res = await make_that_comment("http://127.0.0.1:3000/post/commentsUpdate", u_comment);
-          res1 = await commented_increase("http://127.0.0.1:3000/post/commented");
-          const res2 = await msg_comment_that_post("http://127.0.0.1:3000/post/message");
+          res = await make_that_comment("/post/commentsUpdate", u_comment);
+          res1 = await commented_increase("/post/commented");
+          const res2 = await msg_comment_that_post("/post/message");
           Swal.fire({
             position: 'bottom-end',
             title: '✍ Commented!',
@@ -841,7 +841,7 @@
 
           var img1 = document.createElement("img");
           img1.setAttribute("class", "rounded-circle");
-          img1.setAttribute("src", `http://127.0.0.1:3000/avatar/${user_id}`);
+          img1.setAttribute("src", `/avatar/${user_id}`);
           img1.setAttribute("width", "50");
           img1.setAttribute("height", "50");
           div2.appendChild(img1);
@@ -867,7 +867,7 @@
 
     async function comments_update() {
       try {
-        const res = await update_that_comments("http://127.0.0.1:3000/post/capture_comments");
+        const res = await update_that_comments("/post/capture_comments");
         console.log(res);
 
         for (let i = 0; i < res.length; i++) {
@@ -881,7 +881,7 @@
 
           var img1 = document.createElement("img");
           img1.setAttribute("class", "rounded-circle");
-          img1.setAttribute("src", `http://127.0.0.1:3000/avatar/${res[i].commenter_id}`);
+          img1.setAttribute("src", `/avatar/${res[i].commenter_id}`);
           img1.setAttribute("width", "50");
           img1.setAttribute("height", "50");
           div2.appendChild(img1);
@@ -901,14 +901,14 @@
     }
 
 
-    user_comment_pic.setAttribute("src", `http://127.0.0.1:3000/avatar/${user_id}`);
+    user_comment_pic.setAttribute("src", `/avatar/${user_id}`);
 
     document.getElementById("hashtag1").innerText = tot_hashtags[0];
     document.getElementById("hashtag2").innerText = tot_hashtags[1];
     document.getElementById("hashtag3").innerText = tot_hashtags[2];
     document.getElementsByClassName("post-title")[0].innerText = title;
     document.getElementsByClassName("post-auth-date")[0].innerText = correct_date1.join("-");
-    var src = `http://127.0.0.1:3000/post/${id}`;
+    var src = `/post/${id}`;
     document.getElementById("post-pic").setAttribute("src", src);
 
   </script>

@@ -26,8 +26,8 @@ var user_id = localStorage.getItem("id");
 console.log(user_id);
 document
   .getElementById("user_avatar")
-  .setAttribute("src", `http://127.0.0.1:3000/avatar/${user_id}`);
-var cover_pic = `url('http://127.0.0.1:3000/cover_pic/${user_id}')`;
+  .setAttribute("src", `/avatar/${user_id}`);
+var cover_pic = `url('/cover_pic/${user_id}')`;
 document.getElementById("profile-top-content").style.backgroundImage =
   cover_pic;
 var cover_edit = document.getElementsByClassName("profile_cover_edit_icon")[0];
@@ -112,7 +112,7 @@ function req_that_details(path) {
 
 async function user_details_func(opt_arg) {
   try {
-    const res = await req_that_details("http://127.0.0.1:3000/user/name");
+    const res = await req_that_details("/user/name");
     user_details = res;
 
     if (res.reports === 0) {
@@ -466,7 +466,7 @@ function msg_bookmark_that_post(path,id,pub_id) {
 async function like_req(path, id, like_count, like_id, post_like_sp,pub_id) {
   try {
     const res_temp = await req_to_like(path, id);
-    const res1=await msg_like_that_post("http://127.0.0.1:3000/post/message",id,pub_id);
+    const res1=await msg_like_that_post("/post/message",id,pub_id);
     console.log(res_temp);
     like_count = Number(like_count);
     like_count++;
@@ -483,7 +483,7 @@ async function like_req(path, id, like_count, like_id, post_like_sp,pub_id) {
 async function bk_req(path, id, bk_count, bk_id, post_bk_sp,pub_id) {
   try {
     const res_temp = await req_to_bk(path, id);
-    const res1=await msg_bookmark_that_post("http://127.0.0.1:3000/post/message",id,pub_id);
+    const res1=await msg_bookmark_that_post("/post/message",id,pub_id);
     console.log(res_temp);
     bk_count = Number(bk_count);
     bk_count++;
@@ -513,7 +513,7 @@ function cover_pic_edit_func() {
       bodyFormData.append("cover_pic", file);
       bodyFormData.append("id", user_id);
       const res = await req_for_cover_change(
-        "http://127.0.0.1:3000/upload/user/cover_pic",
+        "/upload/user/cover_pic",
         file
       );
       console.log(res);
@@ -549,7 +549,7 @@ function avatar_edit_func() {
       bodyFormData1.append("avatar", file);
       bodyFormData1.append("id", user_id);
       const res = await req_for_avatar_change(
-        "http://127.0.0.1:3000/upload",
+        "/upload",
         file
       );
       console.log(res);
@@ -584,7 +584,7 @@ async function user_name_edit_func() {
 
   if (ipAddress) {
     const res = await req_for_name_change(
-      "http://127.0.0.1:3000/user/name/edit",
+      "/user/name/edit",
       ipAddress
     );
     Swal.fire(`Your new Name is ${ipAddress}`);
@@ -609,7 +609,7 @@ async function user_tagline_edit_func() {
 
   if (ipAddress) {
     const res = await req_for_tagline_change(
-      "http://127.0.0.1:3000/user/tagline/edit",
+      "/user/tagline/edit",
       ipAddress
     );
     Swal.fire(`Your new Tagline is ${ipAddress}`);
@@ -629,7 +629,7 @@ async function email_edit_func() {
 
   if (email) {
     const res = await req_for_email_change(
-      "http://127.0.0.1:3000/user/email/edit",
+      "/user/email/edit",
       email
     );
     Swal.fire(`Entered email: ${email}`);
@@ -654,7 +654,7 @@ async function password_edit_func() {
 
   if (password) {
     const res = await req_for_password_change(
-      "http://127.0.0.1:3000/user/password/edit",
+      "/user/password/edit",
       password
     );
     Swal.fire(`Entered password: ${password}`);
@@ -674,13 +674,13 @@ var div16;
 async function creating_like_posts(arg) {
   for (let i = 0; i < arg.length; i++) {
     const res = await req_for_post_det(
-      "http://127.0.0.1:3000/posts/post_det",
+      "/posts/post_det",
       arg[i]
     );
     console.log(res);
 
     const res1 = await req_for_publisher_det(
-      "http://127.0.0.1:3000/user/name",
+      "/user/name",
       res.publisher
     );
     console.log(res1);
@@ -707,7 +707,7 @@ async function creating_like_posts(arg) {
 
     var img1 = document.createElement("img");
     img1.setAttribute("class", "rounded-circle");
-    img1.setAttribute("src", `http://127.0.0.1:3000/avatar/${res1._id}`);
+    img1.setAttribute("src", `/avatar/${res1._id}`);
     img1.setAttribute("alt", "authd pic");
     img1.setAttribute("width", "75");
     img1.setAttribute("height", "75");
