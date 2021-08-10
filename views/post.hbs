@@ -94,7 +94,7 @@
       <div class="profile">
         <img src="assets/img/logo.png" alt="" class="img-fluid" />
         <h1 style="text-align: center" class="text-light">
-          <a href="http://localhost:3000/homepage" class="geekcircle">Geek\Circle</a>
+          <a href="/homepage" class="geekcircle">Geek\Circle</a>
         </h1>
 
 
@@ -782,7 +782,7 @@
     share_post.addEventListener("click", copy_post);
 
     async function copy_post() {
-      copyToClp(`http://localhost:3000/posts?post_id=${id}`);
+      copyToClp(`/posts?post_id=${id}`);
       Swal.fire({
         position: 'bottom-end',
         title: '📋 Copied!',

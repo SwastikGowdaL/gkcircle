@@ -730,7 +730,7 @@ async function creating_like_posts(arg) {
     div5.appendChild(div7);
 
     var a1 = document.createElement("a");
-    a1.setAttribute("href", `http://localhost:3000/posts?post_id=${arg[i]}`);
+    a1.setAttribute("href", `/posts?post_id=${arg[i]}`);
     div3.appendChild(a1);
 
     var div8 = document.createElement("div");
@@ -756,7 +756,7 @@ async function creating_like_posts(arg) {
 
     var img2 = document.createElement("img");
     img2.setAttribute("alt", "post-pic");
-    img2.setAttribute("src", `http://localhost:3000/post/${res._id}`);
+    img2.setAttribute("src", `/post/${res._id}`);
     img2.setAttribute("width", "300");
     img2.setAttribute("height", "200");
     div11.appendChild(img2);
@@ -773,7 +773,7 @@ async function creating_like_posts(arg) {
     div14.setAttribute("class", "like");
 
     var res2 = await req_for_like_check(
-      "http://localhost:3000/post/liked_check",
+      "/post/liked_check",
       res._id
     );
     console.log(res2);
@@ -786,7 +786,7 @@ async function creating_like_posts(arg) {
       i1.setAttribute("id", like_id);
       i1.setAttribute(
         "onclick",
-        `like_req('http://localhost:3000/post/liked','${res._id}','${res.likes}','${like_id}','${post_like_sp}','${res.publisher}')`
+        `like_req('/post/liked','${res._id}','${res.likes}','${like_id}','${post_like_sp}','${res.publisher}')`
       );
       div14.appendChild(i1);
 
@@ -803,7 +803,7 @@ async function creating_like_posts(arg) {
     div13.appendChild(div14);
 
     var res3 = await req_for_comment_check(
-      "http://localhost:3000/post/commented_check",
+      "/post/commented_check",
       res._id
     );
     console.log(res3);
@@ -818,7 +818,7 @@ async function creating_like_posts(arg) {
     div13.appendChild(div15);
 
     var res4 = await req_for_bookmark_check(
-      "http://localhost:3000/post/bookmarked_check",
+      "/post/bookmarked_check",
       res._id
     );
 
@@ -834,7 +834,7 @@ async function creating_like_posts(arg) {
       i2.setAttribute("id", bk_id);
       i2.setAttribute(
         "onclick",
-        `bk_req('http://localhost:3000/post/bookmarked','${res._id}','${res.bookmarks}','${bk_id}','${post_bk_sp}','${res.publisher}')`
+        `bk_req('/post/bookmarked','${res._id}','${res.bookmarks}','${bk_id}','${post_bk_sp}','${res.publisher}')`
       );
       div16.appendChild(i2);
       var span2 = document.createElement("span");

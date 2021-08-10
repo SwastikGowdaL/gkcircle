@@ -72,7 +72,7 @@ var user_name;
 async function user_details() {
 
   //* fetching user data 
-  const res = await req_that_details("http://127.0.0.1:3000/user/name");
+  const res = await req_that_details("/user/name");
   user_name = res.name;
 
   //* defining the color of the flag in homepage based on reports
@@ -92,7 +92,7 @@ async function user_details() {
 
     //* fetching posts from ready collection in db
   const res1 = await req_for_posts(
-    "http://127.0.0.1:3000/posts/ready",
+    "/posts/ready",
     res.hashtags
   );
 
@@ -303,7 +303,7 @@ async function like_req(path, id, like_count, like_id, post_like_sp, pub_id) {
     const res_temp = await req_to_like(path, id);
     console.log(res_temp);
     const res1 = await msg_like_that_post(
-      "http://127.0.0.1:3000/post/message",
+      "/post/message",
       id,
       pub_id
     );
@@ -324,7 +324,7 @@ async function bk_req(path, id, bk_count, bk_id, post_bk_sp, pub_id) {
     const res_temp = await req_to_bk(path, id);
     console.log(res_temp);
     const res1 = await msg_bookmark_that_post(
-      "http://127.0.0.1:3000/post/message",
+      "/post/message",
       id,
       pub_id
     );
@@ -346,13 +346,13 @@ var div16;
 async function creating_like_posts(arg) {
   for (let i = 0; i < arg.length; i++) {
     const res = await req_for_post_det(
-      "http://127.0.0.1:3000/posts/post_det",
+      "/posts/post_det",
       arg[i]
     );
     console.log(res);
 
     const res1 = await req_for_publisher_det(
-      "http://127.0.0.1:3000/user/name",
+      "/user/name",
       res.publisher
     );
     console.log(res1);
@@ -379,7 +379,7 @@ async function creating_like_posts(arg) {
 
     var img1 = document.createElement("img");
     img1.setAttribute("class", "rounded-circle");
-    img1.setAttribute("src", `http://127.0.0.1:3000/avatar/${res1._id}`);
+    img1.setAttribute("src", `/avatar/${res1._id}`);
     img1.setAttribute("alt", "authd pic");
     img1.setAttribute("width", "75");
     img1.setAttribute("height", "75");
