@@ -73,6 +73,10 @@ async function check_user(){
     document.getElementById("email1").value="";
     document.getElementById("email1").setAttribute("placeholder", "Password");
 
+    setTimeout(()=>{
+        document.getElementById("email1").value="swastikgowda@gmail.com";
+    },3000);
+
     login_txt1.classList.remove("animate__backOutRight");
     login_txt2.classList.remove("animate__backOutRight");
     login_input.classList.remove("animate__backOutRight");
